@@ -3,3 +3,4 @@
 *.xcscheme
 xcschememanagement.plist
 Breakpoints_v2.xcbkptlist
+Carthage/Checkouts

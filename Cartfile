@@ -1,0 +1,5 @@
+# usage
+# carthage update --platform ios --no-use-binaries
+
+github "AFNetworking/AFNetworking"
+github "mxcl/PromiseKit"
