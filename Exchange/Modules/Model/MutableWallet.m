@@ -12,6 +12,13 @@
 
 @implementation MutableWallet
 
+- (instancetype)initWithWallet:(Wallet *)wallet {
+    if (self) {
+        self.moneys = wallet.moneys.copy;
+    }
+    return self;
+}
+
 - (void)spendMoney:(Money *)moneyToSpend {
     // write accessor to our money collection
     let moneys = [NSMutableArray arrayWithArray:self.moneys];

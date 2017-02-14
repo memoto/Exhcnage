@@ -12,6 +12,13 @@
 
 @implementation Wallet
 
+- (instancetype)initWithMoneys:(NSArray<Money *> *)moneys {
+    if (self) {
+        self.moneys = moneys;
+    }
+    return self;
+}
+
 - (Money *)moneyForCurrency:(NSString *)currencyID {
     let currencyIndex = [self indexOfCurrency:currencyID];
     let money = self.moneys[currencyIndex];

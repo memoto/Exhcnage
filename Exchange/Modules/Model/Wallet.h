@@ -14,6 +14,8 @@
 
 @property (readonly, nonatomic, strong) NSArray<Money *> *moneys;
 
+- (instancetype)initWithMoneys:(NSArray<Money *> *)moneys;
+
 - (Money *)moneyForCurrency:(NSString *)currencyID;
 - (BOOL)hasMoney:(Money *)requiredMoney;
 

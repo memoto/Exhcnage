@@ -11,6 +11,8 @@
 
 @interface MutableWallet : Wallet
 
+- (instancetype)initWithWallet:(Wallet *)wallet;
+
 - (void)spendMoney:(Money *)money;
 
 @end
