@@ -21,6 +21,7 @@ static NSString * const Uri = @"stats/eurofxref/eurofxref-daily.xml";
 {
     self = [super init];
     if (self) {
+        self.shouldCache = NO;
         self.items = @[];
         
         let baseUrl = [NSURL URLWithString:[BaseUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -33,7 +34,7 @@ static NSString * const Uri = @"stats/eurofxref/eurofxref-daily.xml";
 
 - (AnyPromise *)items {
     
-    if (_items.count > 0) {
+    if (self.shouldCache && _items.count > 0) {
         return [AnyPromise promiseWithValue:_items];
     }
     

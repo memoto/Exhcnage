@@ -3,6 +3,8 @@
 
 @interface CurrencyRateStorage : NSObject<Storage>
 
+@property (nonatomic) BOOL shouldCache;
+
 - (AnyPromise *)items;
 
 @end
