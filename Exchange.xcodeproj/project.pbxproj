@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		B55F6D561E539E4F0097B498 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = B55F6D551E539E4F0097B498 /* Cartfile */; };
-		B55F6D591E53A0A30097B498 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55F6D581E53A0A30097B498 /* PromiseKit.framework */; };
+		B55F6D5D1E53B0460097B498 /* CurrencyRateXMLSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B55F6D5C1E53B0460097B498 /* CurrencyRateXMLSerializer.m */; };
+		B55F6D611E53B32F0097B498 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55F6D5F1E53B30F0097B498 /* AFNetworking.framework */; };
+		B55F6D621E53B32F0097B498 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B55F6D5F1E53B30F0097B498 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B55F6D631E53B32F0097B498 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55F6D581E53A0A30097B498 /* PromiseKit.framework */; };
+		B55F6D641E53B32F0097B498 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B55F6D581E53A0A30097B498 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5C283DF1E5358F30080EA19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C283DE1E5358F30080EA19 /* main.m */; };
 		B5C283E21E5358F30080EA19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C283E11E5358F30080EA19 /* AppDelegate.m */; };
 		B5C283E81E5358F30080EA19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C283E61E5358F30080EA19 /* Main.storyboard */; };
@@ -24,9 +28,27 @@
 		B5D0A1BE1E5394F400509AB6 /* CurrencyRateStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A1BD1E5394F400509AB6 /* CurrencyRateStorage.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B55F6D651E53B32F0097B498 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B55F6D621E53B32F0097B498 /* AFNetworking.framework in Embed Frameworks */,
+				B55F6D641E53B32F0097B498 /* PromiseKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B55F6D551E539E4F0097B498 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		B55F6D581E53A0A30097B498 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = SOURCE_ROOT; };
+		B55F6D5B1E53B0460097B498 /* CurrencyRateXMLSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyRateXMLSerializer.h; path = Modules/Storage/Serialization/CurrencyRateXMLSerializer.h; sourceTree = "<group>"; };
+		B55F6D5C1E53B0460097B498 /* CurrencyRateXMLSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyRateXMLSerializer.m; path = Modules/Storage/Serialization/CurrencyRateXMLSerializer.m; sourceTree = "<group>"; };
+		B55F6D5F1E53B30F0097B498 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = ../Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		B5C283DA1E5358F30080EA19 /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C283DE1E5358F30080EA19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5C283E01E5358F30080EA19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,7 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55F6D591E53A0A30097B498 /* PromiseKit.framework in Frameworks */,
+				B55F6D611E53B32F0097B498 /* AFNetworking.framework in Frameworks */,
+				B55F6D631E53B32F0097B498 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,9 +92,26 @@
 		B55F6D571E53A0620097B498 /* ThrirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B55F6D5F1E53B30F0097B498 /* AFNetworking.framework */,
 				B55F6D581E53A0A30097B498 /* PromiseKit.framework */,
 			);
 			name = ThrirdParty;
+			sourceTree = "<group>";
+		};
+		B55F6D5A1E53AFEF0097B498 /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				B55F6D5B1E53B0460097B498 /* CurrencyRateXMLSerializer.h */,
+				B55F6D5C1E53B0460097B498 /* CurrencyRateXMLSerializer.m */,
+			);
+			name = Serialization;
+			sourceTree = "<group>";
+		};
+		B55F6D5E1E53B30F0097B498 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B5C283D11E5358F20080EA19 = {
@@ -79,6 +119,7 @@
 			children = (
 				B5C283DC1E5358F30080EA19 /* Exchange */,
 				B5C283DB1E5358F30080EA19 /* Products */,
+				B55F6D5E1E53B30F0097B498 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +194,7 @@
 		B5D0A1B51E538BEF00509AB6 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				B55F6D5A1E53AFEF0097B498 /* Serialization */,
 				B5D0A1B91E53943200509AB6 /* DataSource.h */,
 				B5D0A1BA1E53943200509AB6 /* DataSource.m */,
 				B5D0A1B61E538C1D00509AB6 /* WalletStorage.h */,
@@ -173,6 +215,7 @@
 				B5C283D61E5358F20080EA19 /* Sources */,
 				B5C283D71E5358F20080EA19 /* Frameworks */,
 				B5C283D81E5358F20080EA19 /* Resources */,
+				B55F6D651E53B32F0097B498 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55F6D5D1E53B0460097B498 /* CurrencyRateXMLSerializer.m in Sources */,
 				B5D0A1AC1E535EBC00509AB6 /* Wallet.m in Sources */,
 				B5D0A1A41E535D0F00509AB6 /* CurrencyRate.m in Sources */,
 				B5C283E21E5358F30080EA19 /* AppDelegate.m in Sources */,
@@ -363,6 +407,7 @@
 		B5C283F21E5358F30080EA19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -381,6 +426,7 @@
 		B5C283F31E5358F30080EA19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

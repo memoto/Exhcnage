@@ -1,5 +1,7 @@
 #import "AppDelegate.h"
 
+#import "CurrencyRateStorage.h"
+
 @interface AppDelegate ()
 
 @end
@@ -9,6 +11,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // TEST
+    CurrencyRateStorage.new.items.then(^(id result) {
+        NSLog(@"result: %@", result);
+    });
     return YES;
 }
 
