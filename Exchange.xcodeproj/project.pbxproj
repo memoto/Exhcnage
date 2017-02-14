@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B55F6D561E539E4F0097B498 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = B55F6D551E539E4F0097B498 /* Cartfile */; };
+		B55F6D591E53A0A30097B498 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55F6D581E53A0A30097B498 /* PromiseKit.framework */; };
 		B5C283DF1E5358F30080EA19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C283DE1E5358F30080EA19 /* main.m */; };
 		B5C283E21E5358F30080EA19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C283E11E5358F30080EA19 /* AppDelegate.m */; };
 		B5C283E81E5358F30080EA19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C283E61E5358F30080EA19 /* Main.storyboard */; };
@@ -17,9 +19,14 @@
 		B5D0A1AC1E535EBC00509AB6 /* Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A1AB1E535EBC00509AB6 /* Wallet.m */; };
 		B5D0A1AF1E5361D800509AB6 /* MutableWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A1AE1E5361D800509AB6 /* MutableWallet.m */; };
 		B5D0A1B41E536BAD00509AB6 /* Wallet+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A1B31E536BAD00509AB6 /* Wallet+Private.m */; };
+		B5D0A1B81E538C1D00509AB6 /* WalletStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A1B71E538C1D00509AB6 /* WalletStorage.m */; };
+		B5D0A1BB1E53943200509AB6 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A1BA1E53943200509AB6 /* DataSource.m */; };
+		B5D0A1BE1E5394F400509AB6 /* CurrencyRateStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A1BD1E5394F400509AB6 /* CurrencyRateStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B55F6D551E539E4F0097B498 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
+		B55F6D581E53A0A30097B498 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = SOURCE_ROOT; };
 		B5C283DA1E5358F30080EA19 /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C283DE1E5358F30080EA19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5C283E01E5358F30080EA19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +46,12 @@
 		B5D0A1B01E53676C00509AB6 /* Let.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Let.h; path = Utils/Let.h; sourceTree = "<group>"; };
 		B5D0A1B21E536BAD00509AB6 /* Wallet+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Wallet+Private.h"; path = "Modules/Model/Wallet+Private.h"; sourceTree = "<group>"; };
 		B5D0A1B31E536BAD00509AB6 /* Wallet+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Wallet+Private.m"; path = "Modules/Model/Wallet+Private.m"; sourceTree = "<group>"; };
+		B5D0A1B61E538C1D00509AB6 /* WalletStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletStorage.h; path = Modules/Storage/WalletStorage.h; sourceTree = "<group>"; };
+		B5D0A1B71E538C1D00509AB6 /* WalletStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletStorage.m; path = Modules/Storage/WalletStorage.m; sourceTree = "<group>"; };
+		B5D0A1B91E53943200509AB6 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSource.h; path = Modules/Storage/DataSource.h; sourceTree = "<group>"; };
+		B5D0A1BA1E53943200509AB6 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSource.m; path = Modules/Storage/DataSource.m; sourceTree = "<group>"; };
+		B5D0A1BC1E5394F400509AB6 /* CurrencyRateStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyRateStorage.h; path = Modules/Storage/CurrencyRateStorage.h; sourceTree = "<group>"; };
+		B5D0A1BD1E5394F400509AB6 /* CurrencyRateStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyRateStorage.m; path = Modules/Storage/CurrencyRateStorage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,12 +59,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55F6D591E53A0A30097B498 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B55F6D571E53A0620097B498 /* ThrirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				B55F6D581E53A0A30097B498 /* PromiseKit.framework */,
+			);
+			name = ThrirdParty;
+			sourceTree = "<group>";
+		};
 		B5C283D11E5358F20080EA19 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +93,8 @@
 		B5C283DC1E5358F30080EA19 /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
+				B55F6D571E53A0620097B498 /* ThrirdParty */,
+				B55F6D551E539E4F0097B498 /* Cartfile */,
 				B5D0A1A61E535D1700509AB6 /* Modules */,
 				B5C283E01E5358F30080EA19 /* AppDelegate.h */,
 				B5C283E11E5358F30080EA19 /* AppDelegate.m */,
@@ -112,6 +136,7 @@
 		B5D0A1A61E535D1700509AB6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B5D0A1B51E538BEF00509AB6 /* Storage */,
 				B5D0A1A11E535B5F00509AB6 /* Model */,
 			);
 			name = Modules;
@@ -123,6 +148,19 @@
 				B5D0A1B01E53676C00509AB6 /* Let.h */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		B5D0A1B51E538BEF00509AB6 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B5D0A1B91E53943200509AB6 /* DataSource.h */,
+				B5D0A1BA1E53943200509AB6 /* DataSource.m */,
+				B5D0A1B61E538C1D00509AB6 /* WalletStorage.h */,
+				B5D0A1B71E538C1D00509AB6 /* WalletStorage.m */,
+				B5D0A1BC1E5394F400509AB6 /* CurrencyRateStorage.h */,
+				B5D0A1BD1E5394F400509AB6 /* CurrencyRateStorage.m */,
+			);
+			name = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55F6D561E539E4F0097B498 /* Cartfile in Resources */,
 				B5C283ED1E5358F30080EA19 /* LaunchScreen.storyboard in Resources */,
 				B5C283EA1E5358F30080EA19 /* Assets.xcassets in Resources */,
 				B5C283E81E5358F30080EA19 /* Main.storyboard in Resources */,
@@ -200,9 +239,12 @@
 				B5D0A1A41E535D0F00509AB6 /* CurrencyRate.m in Sources */,
 				B5C283E21E5358F30080EA19 /* AppDelegate.m in Sources */,
 				B5D0A1A91E535E8500509AB6 /* Money.m in Sources */,
+				B5D0A1B81E538C1D00509AB6 /* WalletStorage.m in Sources */,
 				B5C283DF1E5358F30080EA19 /* main.m in Sources */,
 				B5D0A1AF1E5361D800509AB6 /* MutableWallet.m in Sources */,
 				B5D0A1B41E536BAD00509AB6 /* Wallet+Private.m in Sources */,
+				B5D0A1BE1E5394F400509AB6 /* CurrencyRateStorage.m in Sources */,
+				B5D0A1BB1E53943200509AB6 /* DataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,9 +364,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Utils/Let.h";
 				INFOPLIST_FILE = Exchange/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KYurichev.Exchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -335,9 +382,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Utils/Let.h";
 				INFOPLIST_FILE = Exchange/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KYurichev.Exchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
