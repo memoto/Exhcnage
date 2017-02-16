@@ -16,11 +16,20 @@
     return self;
 }
 
-- (id)first {
-    let firstPromise = self.storage.items.then(^(id value){
-        return value;
+//- (id)first {
+//    let firstPromise = self.storage.items.then(^(id value){
+//        return value;
+//    });
+//    return firstPromise;
+//}
+
+- (void)fetch {
+    __weak let welf = self;
+    self.storage.items.then(^(NSArray *items) {
+        if (!welf.onNewData) return;
+        
+        welf.onNewData(items);
     });
-    return firstPromise;
 }
 
 - (void)setItems:(NSArray *)items {

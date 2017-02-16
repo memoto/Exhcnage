@@ -8,11 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Money : NSObject
+@interface Money : NSObject<NSCopying>
 
 @property (readonly, nonatomic, copy) NSString *currencyID;
 @property (readonly, nonatomic, copy) NSNumber *amount;
 
 - (instancetype)initWithCurrencyID:(NSString *)currencyID andAmount:(NSNumber *)amount;
+
+@end
+
+@class CurrencyRate;
+
+@interface Money (Comparison)
+
+- (BOOL)isGreaterThanOther:(Money *)money;
+- (BOOL)isGreaterThanOther:(Money *)money crossCurrencyRates:(NSArray<CurrencyRate *> *)rates;
+
+@end
+
+@interface Money (Textual)
+
+- (NSString *)text;
 
 @end

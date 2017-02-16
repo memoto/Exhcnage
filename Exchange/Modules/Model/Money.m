@@ -26,4 +26,54 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    Money *copy = [[[self class] alloc] init];
+    
+    if (copy) {
+        copy.currencyID = self.currencyID;
+        copy.amount = self.amount;
+    }
+    
+    return copy;
+}
+
 @end
+
+#import "MoneyConverter.h"
+
+@implementation Money (Comparison)
+
+- (BOOL)isGreaterThanOther:(Money *)money {
+    let mine = self;
+    let theirs = money;
+    
+    if (mine == nil) { return NO; }
+    //NSAssert(![mine.currencyID isEqualToString:theirs.currencyID], @"`isGreaterThanOther` can only compare money of same currency; Use `crossCurrencyRates` variant");
+    
+    return mine.amount.doubleValue >= theirs.amount.doubleValue;
+}
+
+- (BOOL)isGreaterThanOther:(Money *)money crossCurrencyRates:(NSArray<CurrencyRate *> *)rates {
+    let converter = [MoneyConverter.alloc initWithRates:rates
+                                      andTargetCurrency:self.currencyID];
+    let theirs = [converter moneyConvertedFrom:money];
+    
+    return [self isGreaterThanOther:theirs];
+}
+
+@end
+
+@implementation Money (Textual)
+
+- (NSString *)text {
+    
+    let formatter = NSNumberFormatter.new;
+    formatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    formatter.currencyCode = self.currencyID;
+    let result = [formatter stringFromNumber:self.amount];
+    
+    return result;
+}
+
+@end
+

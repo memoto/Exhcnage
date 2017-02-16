@@ -31,7 +31,17 @@
     let money = [self moneyForCurrency:requiredMoney.currencyID];
     if (money == nil) { return NO; }
     
-    return money.amount.doubleValue >= requiredMoney.amount.doubleValue;
+    return [money isGreaterThanOther:requiredMoney];
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    Wallet *copy = [[[self class] alloc] init];
+    
+    if (copy) {
+        copy.moneys = self.moneys;
+    }
+    
+    return copy;
 }
 
 @end

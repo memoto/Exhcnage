@@ -13,7 +13,7 @@
     
     // TEST
     CurrencyRateStorage.new.items.then(^(id result) {
-        NSLog(@"result: %@", result);
+        //NSLog(@"result: %@", result);
     });
     return YES;
 }

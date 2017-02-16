@@ -12,8 +12,11 @@
 
 @interface DataSource<__covariant Item> : NSObject
 
+@property (nonatomic, copy) void(^onNewData)(NSArray<Item> *);
+
 - (instancetype)initWithStorage:(id<Storage>)storage;
-- (AnyPromise *)first;
+
+- (void)fetch;
 - (void)setItems:(NSArray<Item> *)items;
 
 @end

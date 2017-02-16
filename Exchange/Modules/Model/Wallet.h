@@ -10,7 +10,7 @@
 
 @class Money;
 
-@interface Wallet : NSObject
+@interface Wallet : NSObject<NSCopying>
 
 @property (readonly, nonatomic, strong) NSArray<Money *> *moneys;
 
