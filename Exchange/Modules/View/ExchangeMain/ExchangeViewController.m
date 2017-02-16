@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) DataSource<Wallet *> *walletDataSource;
 @property (nonatomic, strong) DataSource<CurrencyRate *> *currencyRatesDataSource;
-
 @property (nonatomic, strong) ExchangeMainViewModel *vm;
 
 @end
@@ -27,8 +26,6 @@
     [super viewDidLoad];
     
     [self configureDataSources];
-    
-
 }
 
 
@@ -51,7 +48,8 @@
         self.walletDataSource.onNewData = ^(NSArray<Wallet *> *wallets) {
             let self = welf;
             let currentWallet = wallets[0];
-            //[self.vm refreshWithMoney:currentWallet];
+            
+            [self.vm refreshWithWallet:currentWallet];
         };
     
     
@@ -62,7 +60,7 @@
 
 - (void)refresh {
     
-    //[self.walletDataSource fetch];
+    [self.walletDataSource fetch];
     [self.currencyRatesDataSource fetch];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

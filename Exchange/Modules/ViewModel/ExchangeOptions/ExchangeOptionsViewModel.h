@@ -2,6 +2,7 @@
 
 @class ExchangeCellViewModel;
 @class Money;
+@class Wallet;
 
 @interface ExchangeOptionsViewModel : NSObject
 
@@ -17,6 +18,6 @@
 - (void)selectOptionAtIndex:(NSInteger)index;
 - (void)refreshWithRelativeCurrency:(NSString *)relCurrency;
 - (void)convertMoney:(Money *)money;
-//- (void)refreshWithMoney:(Money *)money;
+- (void)refreshWithWallet:(Wallet *)wallet;
 
 @end

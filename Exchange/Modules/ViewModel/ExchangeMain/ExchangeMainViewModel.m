@@ -49,4 +49,10 @@
     };
 }
 
+- (void)refreshWithWallet:(Wallet *)wallet {
+    
+    [self.top refreshWithWallet:wallet];
+    [self.bottom refreshWithWallet:wallet];
+}
+
 @end

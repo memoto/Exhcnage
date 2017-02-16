@@ -2,6 +2,7 @@
 #import "ExchangeCellViewModel.h"
 #import "ExchangeCellViewModel+ActionReducer.h"
 #import "Money.h"
+#import "Wallet.h"
 
 #define ExchangableCurrencies @[@"EUR", @"USD", @"GBP"]
 
@@ -70,6 +71,15 @@
     
     for (ExchangeCellViewModel *option in self.options) {
         [option refreshWithRelativeCurrency:relCurrency];
+    }
+}
+
+- (void)refreshWithWallet:(Wallet *)wallet {
+    
+    for (ExchangeCellViewModel *option in self.options) {
+        let requiredCurrency = option.money.currencyID;
+        let money = [wallet moneyForCurrency:requiredCurrency];
+        [option refreshWithMoney:money];
     }
 }
 
