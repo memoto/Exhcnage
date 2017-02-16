@@ -3,3 +3,7 @@
 @interface ExchangeOptionsView (PagerDataSource) <UIPageViewControllerDataSource>
 
 @end
+
+@interface ExchangeOptionsView (PagerDelegate) <UIPageViewControllerDelegate>
+
+@end

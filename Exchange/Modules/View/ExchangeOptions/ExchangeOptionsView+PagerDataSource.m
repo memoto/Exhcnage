@@ -7,7 +7,8 @@
 
 @implementation ExchangeOptionsView (PagerDataSource)
 
-- (ExchangeCell *)nextCellAfter:(ExchangeCell *)cell inForwardDirection:(BOOL)isForward {
+- (NSInteger)nextIndexAfter:(ExchangeCell *)cell inForwardDirection:(BOOL)isForward {
+
     NSInteger currentIndex = [self.vm.options indexOfObjectPassingTest:
                               ^BOOL(ExchangeCellViewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                   
@@ -23,20 +24,26 @@
     : nextIndex < startIndex
     ? endIndex
     : startIndex;
-    let nextCell = self.cells[recoveredNextIndex];
+    
+    return recoveredNextIndex;
+}
+
+- (ExchangeCell *)nextCellAfter:(ExchangeCell *)cell inForwardDirection:(BOOL)isForward {
+    let nextIndex = [self nextIndexAfter:cell inForwardDirection:isForward];
+    let nextCell = self.cells[nextIndex];
     
     return nextCell;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    
+    self.isForwardCurentDirection = YES;
     let cell = (ExchangeCell *)viewController;
     
     return [self nextCellAfter:cell inForwardDirection:YES];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    
+    self.isForwardCurentDirection = NO;
     let cell = (ExchangeCell *)viewController;
     
     return [self nextCellAfter:cell inForwardDirection:NO];
@@ -50,6 +57,25 @@
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
     
     return 0;
+}
+
+@end
+
+@implementation ExchangeOptionsView (PagerDelegate)
+
+- (void)pageViewController:(UIPageViewController *)pageViewController
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers
+       transitionCompleted:(BOOL)completed {
+    
+    if (!finished || !completed) return;
+    
+    let isFrwd = self.isForwardCurentDirection;
+    let lastVC = previousViewControllers.lastObject;
+    let cell = (ExchangeCell *)lastVC;
+    let currentIndex = [self nextIndexAfter:cell inForwardDirection:isFrwd];
+    
+    [self.vm selectOptionAtIndex:currentIndex];
 }
 
 @end

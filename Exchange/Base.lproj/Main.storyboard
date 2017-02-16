@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5zL-ps-gIC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KR3-BK-KZf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,36 +9,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ExchangeCell-->
+        <!--ExchangeMain-->
         <scene sceneID="Z6F-hP-eqi">
             <objects>
-                <viewControllerPlaceholder storyboardName="ExchangeCell" id="sUO-jO-RYW" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ExchangeMain" id="sUO-jO-RYW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iOu-4E-vbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-82" y="-481"/>
         </scene>
-        <!--Exchange Options View-->
-        <scene sceneID="V8T-LU-b3O">
-            <objects>
-                <viewController id="5zL-ps-gIC" customClass="ExchangeOptionsView" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="i2M-Z5-uiN"/>
-                        <viewControllerLayoutGuide type="bottom" id="pjp-EY-RdS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aIJ-oG-5aR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wj4-cA-I9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-875" y="-247"/>
-        </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="uXR-gc-lOe">
             <objects>
-                <viewController id="KR3-BK-KZf" sceneMemberID="viewController">
+                <viewController id="KR3-BK-KZf" customClass="MainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Krn-cu-Clu"/>
                         <viewControllerLayoutGuide type="bottom" id="amJ-4b-vO8"/>
@@ -62,6 +44,7 @@
                             <constraint firstItem="E74-dL-RzR" firstAttribute="centerX" secondItem="RRI-Yq-OcB" secondAttribute="centerX" id="bA2-GI-9CP"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qeV-8Q-p0i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

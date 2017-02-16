@@ -36,6 +36,21 @@
     self.didChange(self);
 }
 
+- (void)refreshWithRelativeCurrency:(NSString *)relCurrency {
+    CurrencyRate *relCurrencyRate = nil;
+    for (CurrencyRate *currencyRate in self.currencyRates) {
+        if (![currencyRate.currencyID isEqualToString:relCurrency]) continue;
+        
+        relCurrencyRate = currencyRate;
+        break;
+    }
+    
+    self.relativeCurrency = relCurrencyRate;
+    
+    if (!self.didChange) return;
+    self.didChange(self);
+}
+
 - (void)convertMoney:(Money *)money {
     let oldBid = self.bid;
     if (self.currencyRates == nil) {
@@ -72,6 +87,9 @@
     
     if (!self.didChange) return;
     self.didChange(self);
+    
+    if (!self.didBidChange) return;
+    self.didBidChange(self);
 }
 
 - (void)didBeginBidInput {

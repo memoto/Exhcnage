@@ -7,5 +7,6 @@
 - (void)convertMoney:(Money *)money;
 - (void)bidInput:(NSString *)bidStr;
 - (void)didBeginBidInput;
+- (void)refreshWithRelativeCurrency:(NSString *)relCurrency;
 
 @end

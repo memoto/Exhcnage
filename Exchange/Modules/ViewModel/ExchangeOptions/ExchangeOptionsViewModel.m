@@ -24,6 +24,13 @@
                 self.didChange(self);
             }
         };
+        option.didBidChange = ^(ExchangeCellViewModel *option) {
+            let self = welf;
+            
+            if (self.didOptionBidChange) {
+                self.didOptionBidChange(option);
+            }
+        };
     }
 }
 
@@ -48,6 +55,28 @@
     }
     
     self.options = options;
+}
+
+- (void)selectOptionAtIndex:(NSInteger)index {
+    
+    let option = self.options[index];
+    
+    if (self.didSelectOption) {
+        self.didSelectOption(option);
+    }
+}
+
+- (void)refreshWithRelativeCurrency:(NSString *)relCurrency {
+    
+    for (ExchangeCellViewModel *option in self.options) {
+        [option refreshWithRelativeCurrency:relCurrency];
+    }
+}
+
+- (void)convertMoney:(Money *)money {
+    for (ExchangeCellViewModel *option in self.options) {
+        [option convertMoney:money];
+    }
 }
 
 @end

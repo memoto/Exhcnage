@@ -1,38 +1,34 @@
 #import "ExchangeViewController.h"
+#import "ExchangeOptionsView.h"
 #import "WalletStorage.h"
 #import "CurrencyRateStorage.h"
 #import "Money.h"
 #import "Wallet.h"
 #import "CurrencyRate.h"
+#import "ExchangeMainViewModel.h"
+#import "ExchangeOptionsViewModel.h"
 
 @interface ExchangeViewController ()
 
 @property (nonatomic, strong) DataSource<Wallet *> *walletDataSource;
 @property (nonatomic, strong) DataSource<CurrencyRate *> *currencyRatesDataSource;
 
-@property (nonatomic, strong) UIPageViewController *topPageVC;
-@property (nonatomic, strong) UIPageViewController *bottomPageVC;
-
-@end
-
-@interface ExchangeViewController (PagerDataSource) <UIPageViewControllerDataSource>
+@property (nonatomic, strong) ExchangeMainViewModel *vm;
 
 @end
 
 @implementation ExchangeViewController
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self configureViewModel];
     [self configureDataSources];
     
-    let pageVC = UIPageViewController.new;
-    pageVC.dataSource = self;
-    self.topPageVC = pageVC;
-    
-    
-    //self.bottomPageVC
+
 }
 
 
@@ -43,6 +39,8 @@
 }
 
 - (void)configureViewModel {
+    if (self.vm != nil) return;
+    self.vm = ExchangeMainViewModel.new;
 }
 
 - (void)configureDataSources {
@@ -67,19 +65,18 @@
     //[self.walletDataSource fetch];
     [self.currencyRatesDataSource fetch];
 }
-
-@end
-
-@implementation ExchangeViewController (PagerDataSource)
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    
-    return nil;
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    
-    return nil;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    let vc = (ExchangeOptionsView *)segue.destinationViewController;
+    [self configureViewModel];
+    if (vc == nil) return;
+    if ([vc.restorationIdentifier isEqualToString:@"ExchangeOptionsViewTop"]) {
+        let __unused _ = vc.view;
+        self.vm.top = vc.vm;
+    }
+    if ([vc.restorationIdentifier isEqualToString:@"ExchangeOptionsViewBottom"]) {
+        let __unused _ = vc.view;
+        self.vm.bottom = vc.vm;
+    }
 }
 
 @end

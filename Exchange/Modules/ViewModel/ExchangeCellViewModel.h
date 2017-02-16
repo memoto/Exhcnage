@@ -7,6 +7,7 @@
 
 // MARK: - Notifier
 @property (nonatomic, copy) void(^didChange)(ExchangeCellViewModel *);
+@property (nonatomic, copy) void(^didBidChange)(ExchangeCellViewModel *);
 
 // MARK: - Computed props
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;

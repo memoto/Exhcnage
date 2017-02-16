@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.isForwardCurentDirection = YES;
+    
     [self configureViewModel];
     [self setupChilds];
     [self setupLayout];
@@ -118,6 +120,7 @@
     _pageVC = pageVC;
     
     pageVC.dataSource = self;
+    pageVC.delegate = self;
 }
 
 - (void)configureViewModel {
