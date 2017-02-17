@@ -17,8 +17,11 @@
     
     __weak let welf = self;
     top.didSelectOption = ^(ExchangeCellViewModel *option) {
+        let self = welf;
         let bottom = welf.bottom;
         if (bottom == nil) return;
+        
+        [self checkValidation];
         
         self.canExchange = !option.isOutOfBudget;
         self.didValidation(self.canExchange);
@@ -27,11 +30,11 @@
         [bottom refreshWithRelativeCurrency:relativeCurrency];
     };
     top.didOptionBidChange =  ^(ExchangeCellViewModel *option) {
+        let self = welf;
         let bottom = welf.bottom;
         if (bottom == nil) return;
         
-        self.canExchange = !option.isOutOfBudget;
-        self.didValidation(self.canExchange);
+        [self checkValidation];
         
         let amount = [NSNumber numberWithDouble:-option.bid];
         let moneyToConvert = [Money.alloc initWithCurrencyID:option.money.currencyID andAmount:amount];
@@ -46,16 +49,22 @@
     
     __weak let welf = self;
     bottom.didSelectOption = ^(ExchangeCellViewModel *option) {
+        let self = welf;
         let top = welf.top;
         if (top == nil) return;
+        
+        [self checkValidation];
         
         let relativeCurrency = option.money.currencyID;
         [top refreshWithRelativeCurrency:relativeCurrency];
     };
     
     bottom.didOptionBidChange = ^(ExchangeCellViewModel *option) {
+        let self = welf;
         let top = welf.top;
         if (top == nil) return;
+        
+        [self checkValidation];
         
         let amount = [NSNumber numberWithDouble:-option.bid];
         let moneyToConvert = [Money.alloc initWithCurrencyID:option.money.currencyID andAmount:amount];
@@ -63,6 +72,16 @@
     };
     
     bottom.didSelectOption(bottom.options[0]);
+}
+
+- (void)checkValidation {
+    let topOption = self.top.selectedOption;
+    let bottomOption = self.bottom.selectedOption;
+    
+    if (topOption && bottomOption) {
+        self.canExchange = !topOption.isOutOfBudget && !bottomOption.isOutOfBudget;
+        self.didValidation(self.canExchange);
+    }
 }
 
 - (void)refreshWithWallet:(Wallet *)wallet {
@@ -88,14 +107,7 @@
     if (self.didWalletChange) {
         self.didWalletChange(changedWallet);
         
-        let topOption = self.top.selectedOption;
-        let bottomOption = self.bottom.selectedOption;
-        
-        if (topOption && bottomOption) {
-            self.canExchange = !topOption.isOutOfBudget && !bottomOption.isOutOfBudget;
-        }
-        
-        self.didValidation(self.canExchange);
+        [self checkValidation];
     }
 }
 
