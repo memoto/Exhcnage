@@ -4,6 +4,12 @@
 
 #import "Money.h"
 
+@interface ExchangeMainViewModel ()
+
+@property (nonatomic, copy) Wallet *wallet;
+
+@end
+
 @implementation ExchangeMainViewModel
 
 - (void)setTop:(ExchangeOptionsViewModel *)top {
@@ -51,6 +57,7 @@
 }
 
 - (void)refreshWithWallet:(Wallet *)wallet {
+    self.wallet = wallet;
     
     [self.top refreshWithWallet:wallet];
     [self.bottom refreshWithWallet:wallet];
@@ -63,7 +70,15 @@
 }
 
 - (void)doExchange {
-    // TODO:
+    
+    let walletAfterTop = [self.top walletAfterExchange];
+    [self.bottom refreshWithWallet:walletAfterTop];
+    let walletAfterBottom = [self.bottom walletAfterExchange];
+    let changedWallet = walletAfterBottom;
+    
+    if (self.didWalletChange) {
+        self.didWalletChange(changedWallet);
+    }
 }
 
 @end

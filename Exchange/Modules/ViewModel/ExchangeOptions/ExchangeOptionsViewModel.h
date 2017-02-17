@@ -14,6 +14,7 @@
 @property (nonatomic, copy) void(^didSelectOption)(ExchangeCellViewModel *);
 
 @property (nonatomic, strong) NSArray<ExchangeCellViewModel *> *options;
+@property (nonatomic, weak) ExchangeCellViewModel *selectedOption;
 
 - (void)setDefaultExchangableCurrencies;
 - (void)selectOptionAtIndex:(NSInteger)index;
@@ -21,5 +22,6 @@
 - (void)convertMoney:(Money *)money;
 - (void)refreshWithWallet:(Wallet *)wallet;
 - (void)refreshWithCurrencyRates:(NSArray<CurrencyRate *>*)currencyRates;
+- (Wallet *)walletAfterExchange;
 
 @end

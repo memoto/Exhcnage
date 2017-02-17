@@ -106,6 +106,7 @@
     
     self.cells = cells;
     self.currentCellIndex = 0;
+    [self.vm selectOptionAtIndex:0];
 }
 
 - (void)setCells:(NSArray<ExchangeCell *> *)cells {

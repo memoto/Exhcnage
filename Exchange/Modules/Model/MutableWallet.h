@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Wallet.h"
 
-@interface MutableWallet : Wallet
+@interface MutableWallet: NSObject
+
+@property (readonly, nonatomic, copy) Wallet *wallet;
 
 - (instancetype)initWithWallet:(Wallet *)wallet;
 
+- (void)giveMoney:(Money *)money;
 - (void)spendMoney:(Money *)money;
 
 @end

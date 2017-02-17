@@ -37,7 +37,16 @@
 
 - (void)configureViewModel {
     if (self.vm != nil) return;
+    
+    __weak let welf = self;
+    
     self.vm = ExchangeMainViewModel.new;
+    self.vm.didWalletChange = ^(Wallet *changedWallet) {
+        let self = welf;
+        
+        [self.vm refreshWithWallet:changedWallet];
+        [self.walletDataSource setItems:@[changedWallet]];
+    };
 }
 
 - (void)configureDataSources {
@@ -76,6 +85,10 @@
         let __unused _ = vc.view;
         self.vm.bottom = vc.vm;
     }
+}
+- (IBAction)exchangeButtonClicked:(id)sender {
+    
+    [self.vm doExchange];
 }
 
 @end

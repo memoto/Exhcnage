@@ -3,8 +3,15 @@
 #import "ExchangeCellViewModel+ActionReducer.h"
 #import "Money.h"
 #import "Wallet.h"
+#import "MutableWallet.h"
 
 #define ExchangableCurrencies @[@"EUR", @"USD", @"GBP"]
+
+@interface ExchangeOptionsViewModel ()
+
+@property (nonatomic, copy) Wallet *wallet;
+
+@end
 
 @implementation ExchangeOptionsViewModel
 
@@ -65,6 +72,7 @@
 - (void)selectOptionAtIndex:(NSInteger)index {
     
     let option = self.options[index];
+    self.selectedOption = option;
     
     if (self.didSelectOption) {
         self.didSelectOption(option);
@@ -79,6 +87,7 @@
 }
 
 - (void)refreshWithWallet:(Wallet *)wallet {
+    self.wallet = wallet;
     
     for (ExchangeCellViewModel *option in self.options) {
         let requiredCurrency = option.money.currencyID;
@@ -98,6 +107,13 @@
     for (ExchangeCellViewModel *option in self.options) {
         [option convertMoney:money];
     }
+}
+
+- (Wallet *)walletAfterExchange {
+    
+    let updatedWallet = [MutableWallet.alloc initWithWallet:self.wallet];
+    [updatedWallet giveMoney:self.selectedOption.bidMoney];
+    return updatedWallet.wallet;
 }
 
 @end

@@ -61,6 +61,13 @@
     return [self isGreaterThanOther:theirs];
 }
 
+- (Money *)moneyBySubstractingOther:(Money *)money {
+    
+    let remaining = self.amount.doubleValue - money.amount.doubleValue;
+    let amount = [NSNumber numberWithDouble:remaining];
+    return [Money.alloc initWithCurrencyID:self.currencyID andAmount:amount];
+}
+
 @end
 
 @implementation Money (Textual)

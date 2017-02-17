@@ -10,27 +10,38 @@
 #import "MutableWallet.h"
 #import "Money.h"
 
+@interface MutableWallet ()
+
+@property (readwrite, nonatomic, copy) Wallet *wallet;
+
+@end
+
 @implementation MutableWallet
 
 - (instancetype)initWithWallet:(Wallet *)wallet {
     if (self) {
-        self.moneys = wallet.moneys.copy;
+        self.wallet = wallet;
     }
     return self;
 }
 
+- (void)giveMoney:(Money *)money {
+    let reversedAmount = [NSNumber numberWithDouble:-money.amount.doubleValue];
+    let moneyToGive = [Money.alloc initWithCurrencyID:money.currencyID
+                                            andAmount:reversedAmount];
+    [self spendMoney:moneyToGive];
+}
+
 - (void)spendMoney:(Money *)moneyToSpend {
     // write accessor to our money collection
-    let moneys = [NSMutableArray arrayWithArray:self.moneys];
+    let moneys = [NSMutableArray arrayWithArray:self.wallet.moneys];
     
-    let money = [self moneyForCurrency:moneyToSpend.currencyID];
+    let money = [self.wallet moneyForCurrency:moneyToSpend.currencyID];
     if (money == nil) { return; }
     
-    let index = [self indexOfCurrency:money.currencyID];
-    let remainingMoneyAmount = money.amount.doubleValue - moneyToSpend.amount.doubleValue;
+    let index = [self.wallet indexOfCurrency:money.currencyID];
+    let remainingMoney = [money moneyBySubstractingOther:moneyToSpend];
     
-    let remainingMoney = [Money.alloc initWithCurrencyID:money.currencyID
-                                               andAmount: [NSNumber numberWithDouble:remainingMoneyAmount]];
     if (remainingMoney.amount > 0) {
         moneys[index] = remainingMoney;
     }
@@ -38,7 +49,7 @@
         [moneys removeObjectAtIndex:index];
     }
     
-    self.moneys = moneys;
+    self.wallet.moneys = moneys;
 }
 
 @end

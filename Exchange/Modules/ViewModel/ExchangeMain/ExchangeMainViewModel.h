@@ -9,6 +9,8 @@
 @property (nonatomic, strong) ExchangeOptionsViewModel *top;
 @property (nonatomic, strong) ExchangeOptionsViewModel *bottom;
 
+@property (nonatomic, copy) void(^didWalletChange)(Wallet *);
+
 - (void)refreshWithWallet:(Wallet *)wallet;
 - (void)refreshWithCurrencyRates:(NSArray<CurrencyRate *>*)currencyRates;
 - (void)doExchange;

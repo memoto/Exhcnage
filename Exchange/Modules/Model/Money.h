@@ -23,6 +23,7 @@
 
 - (BOOL)isGreaterThanOther:(Money *)money;
 - (BOOL)isGreaterThanOther:(Money *)money crossCurrencyRates:(NSArray<CurrencyRate *> *)rates;
+- (Money *)moneyBySubstractingOther:(Money *)money;
 
 @end
 

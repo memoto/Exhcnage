@@ -2,7 +2,7 @@
 
 @interface Wallet ()
 
-@property (readwrite, nonatomic, strong) NSArray<Money *> *moneys;
+@property (readwrite, nonatomic, copy) NSArray<Money *> *moneys;
 
 @end
 
