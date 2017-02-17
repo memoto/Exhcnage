@@ -20,6 +20,9 @@
         let bottom = welf.bottom;
         if (bottom == nil) return;
         
+        self.canExchange = !option.isOutOfBudget;
+        self.didValidation(self.canExchange);
+        
         let relativeCurrency = option.money.currencyID;
         [bottom refreshWithRelativeCurrency:relativeCurrency];
     };
