@@ -8,9 +8,12 @@
 #import "ExchangeMainViewModel.h"
 #import "ExchangeOptionsViewModel.h"
 
+#define RefreshTimeInterval 30 // secs
+
 @interface ExchangeViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *exchangeButton;
+@property (nonatomic, weak) NSTimer *refreshTimer;
 
 @property (nonatomic, strong) DataSource<Wallet *> *walletDataSource;
 @property (nonatomic, strong) DataSource<CurrencyRate *> *currencyRatesDataSource;
@@ -73,6 +76,16 @@
         let self = welf;
         [self.vm refreshWithCurrencyRates:rates];
     };
+    
+    let timer = [NSTimer timerWithTimeInterval:RefreshTimeInterval
+                                       repeats:YES
+                                         block:^(NSTimer * _Nonnull timer) {
+        let self = welf;
+        
+        [self.currencyRatesDataSource fetch];
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    self.refreshTimer = timer;
 }
 
 - (void)refresh {
