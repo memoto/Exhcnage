@@ -54,7 +54,8 @@
     
     
     self.currencyRatesDataSource.onNewData = ^(NSArray<CurrencyRate *> *rates) {
-        //[welf.vm refreshWithCurrencyRates:rates];
+        let self = welf;
+        [self.vm refreshWithCurrencyRates:rates];
     };
 }
 

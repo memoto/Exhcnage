@@ -23,8 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.isForwardCurentDirection = YES;
-    
     [self configureViewModel];
     [self setupChilds];
     [self setupLayout];
@@ -127,16 +125,18 @@
     __weak let welf = self;
     
     self.vm = ExchangeOptionsViewModel.new;
-    self.vm.didChange = ^(ExchangeOptionsViewModel *vm) {
+    self.vm.didOptionChange = ^(ExchangeCellViewModel *vm) {
         let self = welf;
-        [self updateWithViewModel:vm];
+        [self updateWithOptionViewModel:vm];
     };
     
     [self.vm setDefaultExchangableCurrencies];
 }
 
-- (void)updateWithViewModel:(ExchangeOptionsViewModel *)vm {
+- (void)updateWithOptionViewModel:(ExchangeCellViewModel *)vm {
     for (ExchangeCell *cell in self.cells) {
+        if (vm == cell.vm) return;
+        
         [cell updateWithViewModel:cell.vm];
     }
 }

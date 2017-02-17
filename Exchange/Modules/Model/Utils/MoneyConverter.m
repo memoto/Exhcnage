@@ -25,7 +25,7 @@
     let mineRate = [self rateOfCurrency:self.targetCurrency];
     let theirsRate = [self rateOfCurrency:otherMoney.currencyID];
     
-    let ratio = theirsRate.rate.doubleValue/mineRate.rate.doubleValue;
+    let ratio = mineRate.rate.doubleValue/theirsRate.rate.doubleValue;
     
     let convertedAmount = otherMoney.amount.doubleValue * ratio;
     let convertedMoney = [Money.alloc initWithCurrencyID:self.targetCurrency
@@ -37,8 +37,10 @@
 - (CurrencyRate *)rateOfCurrency:(NSString *)currencyID {
     let index = [self.rates indexOfObjectPassingTest:^BOOL(CurrencyRate * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
      
-        return obj.currencyID == currencyID;
+        return [obj.currencyID isEqualToString:currencyID];
     }];
+    
+    if ([currencyID isEqualToString:@"EUR"]) return CurrencyRate.eur;
     if (index == NSNotFound) return nil;
     
     return self.rates[index];

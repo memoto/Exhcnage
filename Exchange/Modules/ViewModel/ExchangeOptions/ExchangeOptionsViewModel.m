@@ -14,10 +14,13 @@
     __weak let welf = self;
     
     for (ExchangeCellViewModel *option in options) {
+        let prevOptionDidChange = option.didChange;
         option.didChange = ^(ExchangeCellViewModel *option) {
             let self = welf;
+            if (prevOptionDidChange) {
+                prevOptionDidChange(option);
+            }
             
-            [self syncOtherOptionsWithOption:option];
             if (self.didOptionChange) {
                 self.didOptionChange(option);
             }
@@ -28,6 +31,7 @@
         option.didBidChange = ^(ExchangeCellViewModel *option) {
             let self = welf;
             
+            [self syncOtherOptionsWithOption:option];
             if (self.didOptionBidChange) {
                 self.didOptionBidChange(option);
             }
@@ -80,6 +84,13 @@
         let requiredCurrency = option.money.currencyID;
         let money = [wallet moneyForCurrency:requiredCurrency];
         [option refreshWithMoney:money];
+    }
+}
+
+- (void)refreshWithCurrencyRates:(NSArray *)currencyRates {
+
+    for (ExchangeCellViewModel *option in self.options) {
+        [option refreshWithCurrencyRates:currencyRates];
     }
 }
 

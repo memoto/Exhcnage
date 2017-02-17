@@ -26,7 +26,6 @@
 		B58838E11E5536C5007DD430 /* ExchangeOptionsView+PagerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B58838E01E5536C5007DD430 /* ExchangeOptionsView+PagerDataSource.m */; };
 		B58838E31E553C95007DD430 /* ExchangeMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58838E21E553C95007DD430 /* ExchangeMain.storyboard */; };
 		B58838E61E553FDC007DD430 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B58838E51E553FDC007DD430 /* MainViewController.m */; };
-		B58838E91E55470B007DD430 /* ExchangeMainViewModel+ActionReducer.m in Sources */ = {isa = PBXBuildFile; fileRef = B58838E81E55470B007DD430 /* ExchangeMainViewModel+ActionReducer.m */; };
 		B5C283DF1E5358F30080EA19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C283DE1E5358F30080EA19 /* main.m */; };
 		B5C283E21E5358F30080EA19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C283E11E5358F30080EA19 /* AppDelegate.m */; };
 		B5C283E81E5358F30080EA19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C283E61E5358F30080EA19 /* Main.storyboard */; };
@@ -88,8 +87,6 @@
 		B58838E21E553C95007DD430 /* ExchangeMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ExchangeMain.storyboard; path = Modules/View/ExchangeMain/ExchangeMain.storyboard; sourceTree = "<group>"; };
 		B58838E41E553FDB007DD430 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		B58838E51E553FDC007DD430 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		B58838E71E55470B007DD430 /* ExchangeMainViewModel+ActionReducer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ExchangeMainViewModel+ActionReducer.h"; path = "Modules/ViewModel/ExchangeMain/ExchangeMainViewModel+ActionReducer.h"; sourceTree = "<group>"; };
-		B58838E81E55470B007DD430 /* ExchangeMainViewModel+ActionReducer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ExchangeMainViewModel+ActionReducer.m"; path = "Modules/ViewModel/ExchangeMain/ExchangeMainViewModel+ActionReducer.m"; sourceTree = "<group>"; };
 		B5C283DA1E5358F30080EA19 /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C283DE1E5358F30080EA19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5C283E01E5358F30080EA19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -244,8 +241,6 @@
 			children = (
 				B58838DC1E55326B007DD430 /* ExchangeMainViewModel.h */,
 				B58838DD1E55326B007DD430 /* ExchangeMainViewModel.m */,
-				B58838E71E55470B007DD430 /* ExchangeMainViewModel+ActionReducer.h */,
-				B58838E81E55470B007DD430 /* ExchangeMainViewModel+ActionReducer.m */,
 			);
 			name = ExchangeMain;
 			sourceTree = "<group>";
@@ -442,7 +437,6 @@
 				B5D0A1BB1E53943200509AB6 /* DataSource.m in Sources */,
 				B58838C41E54BD04007DD430 /* ExchangeCellViewModel+ActionReducer.m in Sources */,
 				B58838E11E5536C5007DD430 /* ExchangeOptionsView+PagerDataSource.m in Sources */,
-				B58838E91E55470B007DD430 /* ExchangeMainViewModel+ActionReducer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

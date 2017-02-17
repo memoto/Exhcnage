@@ -21,7 +21,7 @@
         let bottom = welf.bottom;
         if (bottom == nil) return;
         
-        let amount = [NSNumber numberWithDouble:option.bid];
+        let amount = [NSNumber numberWithDouble:-option.bid];
         let moneyToConvert = [Money.alloc initWithCurrencyID:option.money.currencyID andAmount:amount];
         [bottom convertMoney:moneyToConvert];
     };
@@ -32,7 +32,7 @@
     _bottom = bottom;
     
     __weak let welf = self;
-    bottom.didOptionChange = ^(ExchangeCellViewModel *option) {
+    bottom.didSelectOption = ^(ExchangeCellViewModel *option) {
         let top = welf.top;
         if (top == nil) return;
         
@@ -44,7 +44,8 @@
         let top = welf.top;
         if (top == nil) return;
         
-        let moneyToConvert = option.money;
+        let amount = [NSNumber numberWithDouble:-option.bid];
+        let moneyToConvert = [Money.alloc initWithCurrencyID:option.money.currencyID andAmount:amount];
         [top convertMoney:moneyToConvert];
     };
 }
@@ -53,6 +54,16 @@
     
     [self.top refreshWithWallet:wallet];
     [self.bottom refreshWithWallet:wallet];
+}
+
+- (void)refreshWithCurrencyRates:(NSArray<CurrencyRate *> *)currencyRates {
+    
+    [self.top refreshWithCurrencyRates:currencyRates];
+    [self.bottom refreshWithCurrencyRates:currencyRates];
+}
+
+- (void)doExchange {
+    // TODO:
 }
 
 @end

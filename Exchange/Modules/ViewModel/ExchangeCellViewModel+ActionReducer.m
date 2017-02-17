@@ -44,8 +44,16 @@
         relCurrencyRate = currencyRate;
         break;
     }
+    if ([relCurrency isEqualToString:CurrencyRate.eur.currencyID]) {
+        relCurrencyRate = CurrencyRate.eur;
+    }
     
-    self.relativeCurrency = relCurrencyRate;
+    if ([relCurrency isEqualToString:self.money.currencyID]) {
+        self.relativeCurrency = nil;
+    }
+    else {
+        self.relativeCurrency = relCurrencyRate;
+    }
     
     if (!self.didChange) return;
     self.didChange(self);
@@ -64,8 +72,8 @@
     self.shouldShowSign = YES;
     
     if (oldBid == self.bid) return;
-    if (!self.didChange) return;
-    self.didChange(self);
+    if (!self.didConverted) return;
+    self.didConverted(self);
 }
 
 - (void)bidInput:(NSString *)bidStr {
@@ -79,7 +87,7 @@
     let scanner = [NSScanner scannerWithString:bidStr];
     if ([scanner scanDouble:&pBid]) {
         let bid = fabs(bidStr.doubleValue);
-        self.bid = self.relativeCurrency != nil || bid == 0
+        self.bid = bid == 0
                     ? bid
                     : -bid;
     }

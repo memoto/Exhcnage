@@ -2,6 +2,7 @@
 
 @class ExchangeOptionsViewModel;
 @class Wallet;
+@class CurrencyRate;
 
 @interface ExchangeMainViewModel : NSObject
 
@@ -9,5 +10,7 @@
 @property (nonatomic, strong) ExchangeOptionsViewModel *bottom;
 
 - (void)refreshWithWallet:(Wallet *)wallet;
+- (void)refreshWithCurrencyRates:(NSArray<CurrencyRate *>*)currencyRates;
+- (void)doExchange;
 
 @end

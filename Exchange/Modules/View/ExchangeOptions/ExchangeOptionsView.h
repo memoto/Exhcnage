@@ -2,13 +2,14 @@
 
 @class ExchangeOptionsViewModel;
 @class ExchangeCell;
+@class ExchangeCellViewModel;
 
 @interface ExchangeOptionsView : UIViewController
 
 @property (readonly, nonatomic, strong) NSArray<ExchangeCell *> *cells;
 @property (nonatomic, strong) ExchangeOptionsViewModel *vm;
-@property (nonatomic) BOOL isForwardCurentDirection;
+@property (nonatomic, weak) ExchangeCell *current;
 
-- (void)updateWithViewModel:(ExchangeOptionsViewModel *)vm;
+- (void)updateWithOptionViewModel:(ExchangeCellViewModel *)vm;
 
 @end

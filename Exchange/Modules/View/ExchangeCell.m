@@ -49,11 +49,19 @@
         self.vm = [ExchangeCellViewModel.alloc initWithCurrency:nil andMoney:nil];
     }
     __weak ExchangeCell *welf = self;
-    if (!self.vm.didChange) {
-        self.vm.didChange = ^(ExchangeCellViewModel *vm){
-            [welf updateWithViewModel:vm];
-        };
-    }
+    // bindings
+    let prevDidChange = self.vm.didChange;
+    self.vm.didChange = ^(ExchangeCellViewModel *vm){
+        [welf updateWithViewModel:vm];
+        
+        if (prevDidChange) {
+            prevDidChange(vm);
+        }
+    };
+    self.vm.didConverted = ^(ExchangeCellViewModel *vm){
+        [welf updateWithViewModel:vm];
+    };
+    //
     [self updateWithViewModel:self.vm];
 }
 

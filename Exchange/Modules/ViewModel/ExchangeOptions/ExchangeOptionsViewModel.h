@@ -3,6 +3,7 @@
 @class ExchangeCellViewModel;
 @class Money;
 @class Wallet;
+@class CurrencyRate;
 
 @interface ExchangeOptionsViewModel : NSObject
 
@@ -19,5 +20,6 @@
 - (void)refreshWithRelativeCurrency:(NSString *)relCurrency;
 - (void)convertMoney:(Money *)money;
 - (void)refreshWithWallet:(Wallet *)wallet;
+- (void)refreshWithCurrencyRates:(NSArray<CurrencyRate *>*)currencyRates;
 
 @end

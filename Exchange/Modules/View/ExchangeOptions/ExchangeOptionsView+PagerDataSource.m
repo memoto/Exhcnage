@@ -7,13 +7,18 @@
 
 @implementation ExchangeOptionsView (PagerDataSource)
 
-- (NSInteger)nextIndexAfter:(ExchangeCell *)cell inForwardDirection:(BOOL)isForward {
-
-    NSInteger currentIndex = [self.vm.options indexOfObjectPassingTest:
+- (NSInteger)indexOfCell:(ExchangeCell *)cell {
+    NSInteger index = [self.vm.options indexOfObjectPassingTest:
                               ^BOOL(ExchangeCellViewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                   
                                   return [obj.money.currencyID isEqualToString:cell.vm.money.currencyID];
                               }];
+    return index;
+}
+
+- (NSInteger)nextIndexAfter:(ExchangeCell *)cell inForwardDirection:(BOOL)isForward {
+
+    let currentIndex = [self indexOfCell:cell];
     let diff = isForward ? 1 : -1;
     let nextIndex = currentIndex + diff;
     let startIndex = 0;
@@ -36,14 +41,14 @@
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    self.isForwardCurentDirection = YES;
+    
     let cell = (ExchangeCell *)viewController;
     
     return [self nextCellAfter:cell inForwardDirection:YES];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    self.isForwardCurentDirection = NO;
+    
     let cell = (ExchangeCell *)viewController;
     
     return [self nextCellAfter:cell inForwardDirection:NO];
@@ -70,10 +75,10 @@
     
     if (!finished || !completed) return;
     
-    let isFrwd = self.isForwardCurentDirection;
-    let lastVC = previousViewControllers.lastObject;
-    let cell = (ExchangeCell *)lastVC;
-    let currentIndex = [self nextIndexAfter:cell inForwardDirection:isFrwd];
+    let currentCell = pageViewController.viewControllers[0];
+    let currentIndex = [self indexOfCell:currentCell];
+    
+    self.current = currentCell;
     
     [self.vm selectOptionAtIndex:currentIndex];
 }
