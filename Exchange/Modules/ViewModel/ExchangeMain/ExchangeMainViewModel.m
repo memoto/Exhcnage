@@ -27,11 +27,15 @@
         let bottom = welf.bottom;
         if (bottom == nil) return;
         
+        self.canExchange = !option.isOutOfBudget;
+        self.didValidation(self.canExchange);
+        
         let amount = [NSNumber numberWithDouble:-option.bid];
         let moneyToConvert = [Money.alloc initWithCurrencyID:option.money.currencyID andAmount:amount];
         [bottom convertMoney:moneyToConvert];
     };
     
+    top.didSelectOption(top.options[0]);
 }
 
 - (void)setBottom:(ExchangeOptionsViewModel *)bottom {
@@ -54,6 +58,8 @@
         let moneyToConvert = [Money.alloc initWithCurrencyID:option.money.currencyID andAmount:amount];
         [top convertMoney:moneyToConvert];
     };
+    
+    bottom.didSelectOption(bottom.options[0]);
 }
 
 - (void)refreshWithWallet:(Wallet *)wallet {

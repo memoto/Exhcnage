@@ -31,7 +31,6 @@
 }
 
 - (NSString *)remainingMoneyText {
-    // TODO: make string
     let moneyStr = self.money.text;
     let str = [NSString stringWithFormat:@"You have %@", moneyStr];
     

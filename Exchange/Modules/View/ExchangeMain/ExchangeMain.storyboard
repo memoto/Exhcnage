@@ -35,6 +35,9 @@
                                 <state key="normal" title="Exchange">
                                     <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="exchangeButtonClicked:" destination="lji-OH-r6W" eventType="touchUpInside" id="hdM-g5-jyJ"/>
                                 </connections>
@@ -60,6 +63,9 @@
                             <constraint firstItem="unR-4Q-UNO" firstAttribute="height" secondItem="3CZ-ea-r34" secondAttribute="height" id="hpd-Qq-dr1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="exchangeButton" destination="pT0-GG-bLX" id="1O5-Qt-KGE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBA-0K-hsy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

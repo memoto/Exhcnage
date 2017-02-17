@@ -10,6 +10,8 @@
 
 @interface ExchangeViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *exchangeButton;
+
 @property (nonatomic, strong) DataSource<Wallet *> *walletDataSource;
 @property (nonatomic, strong) DataSource<CurrencyRate *> *currencyRatesDataSource;
 @property (nonatomic, strong) ExchangeMainViewModel *vm;
@@ -46,6 +48,11 @@
         
         [self.vm refreshWithWallet:changedWallet];
         [self.walletDataSource setItems:@[changedWallet]];
+    };
+    self.vm.didValidation = ^(BOOL isInputValid) {
+        let self = welf;
+        
+        self.exchangeButton.enabled = isInputValid;
     };
 }
 
