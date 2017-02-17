@@ -84,6 +84,15 @@
     
     if (self.didWalletChange) {
         self.didWalletChange(changedWallet);
+        
+        let topOption = self.top.selectedOption;
+        let bottomOption = self.bottom.selectedOption;
+        
+        if (topOption && bottomOption) {
+            self.canExchange = !topOption.isOutOfBudget && !bottomOption.isOutOfBudget;
+        }
+        
+        self.didValidation(self.canExchange);
     }
 }
 
